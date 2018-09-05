@@ -1,0 +1,33 @@
+﻿
+@model IEnumerable<UnitTestingStudy.Models.Album>
+
+
+
+@*@Html.DropDownListFor(x=>x., (SelectList)ViewBag.Test)*@
+@if (ViewBag.Test != null)
+{
+    using (Html.BeginForm("Index", "Home"))
+    {
+
+
+        @Html.DropDownList("DropDown", ViewBag.Test as SelectList) //make sure DropDown is on Controller
+
+
+        <button type="submit">Submit</button>
+    }
+}
+@if (ViewBag.Test == null)
+{
+   <p>@Model.Take(1).SingleOrDefault().Artist.Name</p>
+    foreach (var item in Model)
+    {
+        <li>@item.Title</li>
+
+    }
+}
+
+
+
+
+
+
